@@ -1,48 +1,9 @@
 import React, { Component } from 'react';
 import { Tree } from 'antd';
+import * as data from './data/data';
 import './App.css';
 
 const { TreeNode } = Tree
-
-const treeData1 = [
-  {
-    title: 'parent 1',
-    key: '0-0',
-    value: false,
-    children: [
-      {
-        title: 'parent 1-0',
-        key: '0-0-0',
-        value: true,
-      },
-      {
-        title: 'parent 1-1',
-        key: '0-0-1',
-        value: false,
-      }
-    ]
-  }
-]
-
-const treeData2 = [
-  {
-    title: 'parent 1',
-    key: '0-0',
-    value: false,
-    children: [
-      {
-        title: 'parent 1-0',
-        key: '0-0-0',
-        value: false,
-      },
-      {
-        title: 'parent 1-1',
-        key: '0-0-1',
-        value: true,
-      }
-    ]
-  }
-]
 
 export default class App extends Component {
   state = {
@@ -52,7 +13,7 @@ export default class App extends Component {
 
   componentDidMount() {
     this.setState({
-      defaultKeys: this.getCheckedKeys(treeData2)
+      defaultKeys: this.getCheckedKeys(data.treeData)
     })
   }
 
@@ -97,7 +58,7 @@ export default class App extends Component {
   }
 
   render(){
-    let defaultCheckedKeys = this.getCheckedKeys(treeData1);
+    let defaultCheckedKeys = this.getCheckedKeys(data.treeData);
 
     return (
       <div>
@@ -108,7 +69,7 @@ export default class App extends Component {
             onCheck={this.onCheck1}
             defaultCheckedKeys={defaultCheckedKeys}
           >
-            {this.renderTreeNodes(treeData1)}
+            {this.renderTreeNodes(data.treeData)}
           </Tree>
         </div>
         <div>
@@ -118,7 +79,7 @@ export default class App extends Component {
             onCheck={this.onCheck2}
             checkedKeys={this.state.defaultKeys}
           >
-            {this.renderTreeNodes(treeData2)}
+            {this.renderTreeNodes(data.treeData)}
           </Tree>
         </div>
       </div>
